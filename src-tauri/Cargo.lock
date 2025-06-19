@@ -652,7 +652,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "csv-cleaning-on-tauri"
+name = "csv-cleaning-2-on-tauri"
 version = "0.1.0"
 dependencies = [
  "serde",

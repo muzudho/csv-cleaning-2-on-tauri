@@ -1,23 +1,27 @@
 <template>
+    <!--
     <main class="container">
         <h1>Vuetify 3 の練習</h1>
     </main>
-    <!--
+    -->
     <v-app>
         <v-main>
             <h1>Vuetify 3 の練習</h1>
+    <!--
             <CsvTable />
+    -->
+            <v-container>
+                <v-row>
+                    <input style="width:55%; height: 10vh;" :value="filePathVM">
+                    <button @click="onOpenButtonClicked" style="width:15%; height: 10vh;">Open</button>
+                    <button @click="onRefreshButtonClicked" style="width:15%; height: 10vh;">Refresh</button>
+                    <button @click="onWriteButtonClicked" style="width:15%; height: 10vh;">Write</button>
+                </v-row>
+            </v-container>
         </v-main>
     </v-app>    
-    -->
     <!--
     <main class="container">
-        <div class="row">
-            <input style="width:55%; height: 10vh;" :value="filePathVM">
-            <button @click="onOpenButtonClicked" style="width:15%; height: 10vh;">Open</button>
-            <button @click="onRefreshButtonClicked" style="width:15%; height: 10vh;">Refresh</button>
-            <button @click="onWriteButtonClicked" style="width:15%; height: 10vh;">Write</button>
-        </div>
         <textarea style="width:100%; height:80vh;" v-model="textVM"></textarea>
         <div class="row">
             <select v-model="selectedItemVM" style="width:80%;">
@@ -31,18 +35,15 @@
 </template>
 
 <script setup lang="ts">
-    /*
-    import { invoke } from "@tauri-apps/api/core";
+    //import { invoke } from "@tauri-apps/api/core";
     import { open } from '@tauri-apps/plugin-dialog';
     import { readTextFile, writeTextFile } from '@tauri-apps/plugin-fs';
     import { ref } from "vue";
 
     const filePathVM = ref("C:\\Users\\muzud\\OneDrive\\ドキュメント\\temp\\temp.csv");
-    const selectedItemVM = ref()
+    //const selectedItemVM = ref()
     const textVM = ref()
-    */
 
-    /*
     async function onOpenButtonClicked() {
         console.log("［Open］ボタンを押したぜ。")
         // Open a dialog
@@ -66,16 +67,17 @@
         await writeTextFile(filePathVM.value, textVM.value);
     }
 
+    async function readFile() {
+        const contents = await readTextFile(filePathVM.value);  
+        textVM.value = contents
+    }
+
+    /*
     async function onExecuteButtonClicked() {
         console.log("［Execute］ボタンを押したぜ。")
         //textVM.value = `テスト中３ Execute selectedItemVM:[${selectedItemVM.value}]`
         // TODO 変換(textVM.value)
         textVM.value = await callTranslate(textVM.value, selectedItemVM.value)
-    }
-
-    async function readFile() {
-        const contents = await readTextFile(filePathVM.value);  
-        textVM.value = contents
     }
 
     // Tauriのコマンドを呼び出し。

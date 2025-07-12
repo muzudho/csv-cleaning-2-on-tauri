@@ -1,6 +1,6 @@
 {
     "$schema": "https://schema.tauri.app/config/2",
-    "productName": "csv-cleaning-on-tauri",
+    "productName": "csv-cleaning-2-on-tauri",
     "version": "0.1.0",
     "identifier": "com.warabenture.csv-cleaning-on-tauri",
     "build": {
@@ -12,7 +12,7 @@
     "app": {
         "windows": [
             {
-                "title": "CSVクリーニング on Tauri",
+                "title": "CSVクリーニング 2 on Tauri",
                 "width": 800,
                 "height": 600
             }

@@ -1,9 +1,15 @@
 <template>
+    <main class="container">
+        <h1>Vuetify 3 の練習</h1>
+    </main>
+    <!--
     <v-app>
         <v-main>
+            <h1>Vuetify 3 の練習</h1>
             <CsvTable />
         </v-main>
     </v-app>    
+    -->
     <!--
     <main class="container">
         <div class="row">
@@ -25,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+    /*
     import { invoke } from "@tauri-apps/api/core";
     import { open } from '@tauri-apps/plugin-dialog';
     import { readTextFile, writeTextFile } from '@tauri-apps/plugin-fs';
@@ -33,7 +40,9 @@
     const filePathVM = ref("C:\\Users\\muzud\\OneDrive\\ドキュメント\\temp\\temp.csv");
     const selectedItemVM = ref()
     const textVM = ref()
+    */
 
+    /*
     async function onOpenButtonClicked() {
         console.log("［Open］ボタンを押したぜ。")
         // Open a dialog
@@ -75,6 +84,7 @@
         const resultStr = await invoke<string>('translate', {sourceStr: sourceStr, commandName: commandName});
         return resultStr;
     }
+    */
 </script>
 
 <style>

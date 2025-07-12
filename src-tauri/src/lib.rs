@@ -1,10 +1,38 @@
 //use std::fs::{self};
 //use std::path::Path;
 
+use csv::Reader;
+use serde::{Deserialize, Serialize};
+use std::fs::File;
+//use tauri::command;
+
+
+#[derive(Serialize, Deserialize)]
+struct CsvRow {
+    // CSVのヘッダーに合わせてフィールドを定義（例: name, age）
+    name: String,
+    age: String,
+}
+
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
+}
+
+#[tauri::command]
+#[allow(non_snake_case)]
+fn read_csv(file_path: String) -> Result<Vec<CsvRow>, String> {
+    let file = File::open(&file_path).map_err(|e| e.to_string())?;
+    let mut rdr = Reader::from_reader(file);
+    let mut rows = Vec::new();
+
+    for result in rdr.deserialize() {
+        let record: CsvRow = result.map_err(|e| e.to_string())?;
+        rows.push(record);
+    }
+
+    Ok(rows)
 }
 
 // ディレクトリー内のファイル名を取得するTauriコマンド。
@@ -67,7 +95,8 @@ pub fn run() {
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
             greet,
-            translate
+            translate,
+            read_csv
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

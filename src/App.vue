@@ -12,17 +12,17 @@
     -->
             <v-container>
                 <v-row>
-                    <input style="width:55%; height: 10vh;" :value="filePathVM">
-                    <button @click="onOpenButtonClicked" style="width:15%; height: 10vh;">Open</button>
-                    <button @click="onRefreshButtonClicked" style="width:15%; height: 10vh;">Refresh</button>
-                    <button @click="onWriteButtonClicked" style="width:15%; height: 10vh;">Write</button>
+                    <v-text-field v-model="filePathVM" label="File Path" style="width:55%; height: 10vh;"></v-text-field>
+                    <v-btn @click="onOpenButtonClicked" style="width:15%; height: 10vh;">Open</v-btn>
+                    <v-btn @click="onRefreshButtonClicked" style="width:15%; height: 10vh;">Refresh</v-btn>
+                    <v-btn @click="onWriteButtonClicked" style="width:15%; height: 10vh;">Write</v-btn>
                 </v-row>
+                <textarea style="width:100%; height:80vh;" v-model="textVM"></textarea>
             </v-container>
         </v-main>
     </v-app>    
     <!--
     <main class="container">
-        <textarea style="width:100%; height:80vh;" v-model="textVM"></textarea>
         <div class="row">
             <select v-model="selectedItemVM" style="width:80%;">
                 <option value="" selected></option>

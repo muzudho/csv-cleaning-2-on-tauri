@@ -12,12 +12,14 @@
     -->
             <v-container>
                 <v-row>
-                    <v-text-field v-model="filePathVM" label="File Path" style="width:55%; height: 10vh;"></v-text-field>
-                    <v-btn @click="onOpenButtonClicked" style="width:15%; height: 10vh;">Open</v-btn>
-                    <v-btn @click="onRefreshButtonClicked" style="width:15%; height: 10vh;">Refresh</v-btn>
-                    <v-btn @click="onWriteButtonClicked" style="width:15%; height: 10vh;">Write</v-btn>
+                    <v-col><v-text-field v-model="filePathVM" label="File Path"></v-text-field></v-col>
+                    <v-col cols="1"><v-btn @click="onOpenButtonClicked">Open</v-btn></v-col>
+                    <v-col cols="1"><v-btn @click="onRefreshButtonClicked">Refresh</v-btn></v-col>
+                    <v-col cols="1"><v-btn @click="onWriteButtonClicked">Write</v-btn></v-col>
                 </v-row>
-                <textarea style="width:100%; height:80vh;" v-model="textVM"></textarea>
+                <v-row>
+                    <v-textarea style="width:100%; height:80vh;" v-model="textVM"></v-textarea>
+                </v-row>
             </v-container>
         </v-main>
     </v-app>    

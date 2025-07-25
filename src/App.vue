@@ -1,26 +1,27 @@
 <template>
     <v-app>
         <v-main>
-            <h1>Vuetify 3 の練習</h1>
     <!--
             <CsvTable />
     -->
             <v-container>
                 <v-row>
                     <v-col><v-text-field v-model="filePathVM" label="File Path"></v-text-field></v-col>
-                    <v-col cols="1"><v-btn @click="onOpenButtonClicked">Open</v-btn></v-col>
-                    <v-col cols="1"><v-btn @click="onRefreshButtonClicked">Refresh</v-btn></v-col>
-                    <v-col cols="1"><v-btn @click="onWriteButtonClicked">Write</v-btn></v-col>
+                    <v-col cols="2"><v-btn block v-on:click="onOpenButtonClicked">Open</v-btn></v-col>
+                    <v-col cols="2"><v-btn block v-on:click="onRefreshButtonClicked">Refresh</v-btn></v-col>
+                    <v-col cols="2"><v-btn block v-on:click="onWriteButtonClicked">Write</v-btn></v-col>
                 </v-row>
                 <v-row>
-                    <v-textarea style="width:100%; height:80vh;" v-model="textVM"></v-textarea>
+                    <v-textarea v-model="textVM"></v-textarea>
                 </v-row>
                 <v-row>
-                    <select v-model="selectedItemVM" style="width:80%;">
-                        <option value="" selected></option>
-                        <option value="都道府県スプリット1">都道府県スプリット</option>
-                    </select>
-                    <button v-on:click="onExecuteButtonClicked" style="width:20%; height: 10vh;">Execute</button>
+                    <v-col>
+                        <v-select v-model="selectedItemVM" label="機能">
+                            <option value="" selected></option>
+                            <option value="都道府県スプリット1">都道府県スプリット</option>
+                        </v-select>
+                    </v-col>
+                    <v-col cols="2"><v-btn block v-on:click="onExecuteButtonClicked" style="width:20%; height: 10vh;">Execute</v-btn></v-col>
                 </v-row>
             </v-container>
         </v-main>

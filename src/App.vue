@@ -16,9 +16,12 @@
                 </v-row>
                 <v-row>
                     <v-col>
-                        <v-select v-model="selectedItemVM" label="機能">
-                            <option value="" selected></option>
-                            <option value="都道府県スプリット1">都道府県スプリット</option>
+                        <v-select
+                                v-model="selectedItemVM"
+                                v-bind:items="optionsVM"
+                                label="機能"
+                                item-title="key"
+                                item-value="value">
                         </v-select>
                     </v-col>
                     <v-col cols="2"><v-btn block v-on:click="onExecuteButtonClicked" style="width:20%; height: 10vh;">Execute</v-btn></v-col>
@@ -34,8 +37,17 @@
     import { readTextFile, writeTextFile } from '@tauri-apps/plugin-fs';
     import { ref } from "vue";
 
+    interface IOption {
+        key: string;
+        value: string;
+    }
+
     const filePathVM = ref("C:\\Users\\muzud\\OneDrive\\ドキュメント\\temp\\temp.csv");
-    const selectedItemVM = ref()
+    const optionsVM = <Array<IOption>>[
+        {key: "", value: ""},
+        {key: "都道府県スプリット1", value: "都道府県スプリット"},
+    ]
+    const selectedItemVM = ref<IOption>({key: "", value: ""})
     const textVM = ref()
 
     async function onOpenButtonClicked() {
@@ -68,9 +80,9 @@
 
     async function onExecuteButtonClicked() {
         console.log("［Execute］ボタンを押したぜ。")
-        //textVM.value = `テスト中３ Execute selectedItemVM:[${selectedItemVM.value}]`
-        // TODO 変換(textVM.value)
-        textVM.value = await callTranslate(textVM.value, selectedItemVM.value)
+        textVM.value = "［Execute］ボタンを押したぜ。"
+        //textVM.value = selectedItemVM
+        //textVM.value = await callTranslate(textVM.value, selectedItemVM.value.key)
     }
 
     // Tauriのコマンドを呼び出し。

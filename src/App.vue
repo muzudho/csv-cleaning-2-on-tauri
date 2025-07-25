@@ -4,27 +4,28 @@
     <!--
             <CsvTable />
     -->
-            <v-container>
-                <v-row>
-                    <v-col><v-text-field v-model="filePathVM" label="File Path"></v-text-field></v-col>
-                    <v-col cols="2"><v-btn block v-on:click="onOpenButtonClicked">Open</v-btn></v-col>
-                    <v-col cols="2"><v-btn block v-on:click="onRefreshButtonClicked">Refresh</v-btn></v-col>
-                    <v-col cols="2"><v-btn block v-on:click="onWriteButtonClicked">Write</v-btn></v-col>
+            <v-container class="pa-1">
+                <v-row no-gutters>
+                    <v-col><v-text-field v-model="filePathVM" label="File Path" class="pa-0"></v-text-field></v-col>
+                    <v-col cols="2"><v-btn block v-on:click="onOpenButtonClicked" class="pa-0">Open</v-btn></v-col>
+                    <v-col cols="2"><v-btn block v-on:click="onRefreshButtonClicked" class="pa-0">Refresh</v-btn></v-col>
+                    <v-col cols="2"><v-btn block v-on:click="onWriteButtonClicked" class="pa-0">Write</v-btn></v-col>
                 </v-row>
-                <v-row>
+                <v-row no-gutters>
                     <v-textarea v-model="textVM"></v-textarea>
                 </v-row>
-                <v-row>
-                    <v-col>
+                <v-row no-gutters>
+                    <v-col class="pa-0">
                         <v-select
                                 v-model="selectedItemVM"
                                 v-bind:items="optionsVM"
                                 label="機能"
                                 item-title="value"
-                                item-value="key">
+                                item-value="key"
+                                class="ma-0">
                         </v-select>
                     </v-col>
-                    <v-col cols="2"><v-btn block v-on:click="onExecuteButtonClicked" style="width:20%; height: 10vh;">Execute</v-btn></v-col>
+                    <v-col cols="2"><v-btn block v-on:click="onExecuteButtonClicked" class="pa-0">Execute</v-btn></v-col>
                 </v-row>
             </v-container>
         </v-main>

@@ -1,9 +1,4 @@
 <template>
-    <!--
-    <main class="container">
-        <h1>Vuetify 3 の練習</h1>
-    </main>
-    -->
     <v-app>
         <v-main>
             <h1>Vuetify 3 の練習</h1>
@@ -20,30 +15,26 @@
                 <v-row>
                     <v-textarea style="width:100%; height:80vh;" v-model="textVM"></v-textarea>
                 </v-row>
+                <v-row>
+                    <select v-model="selectedItemVM" style="width:80%;">
+                        <option value="" selected></option>
+                        <option value="都道府県スプリット1">都道府県スプリット</option>
+                    </select>
+                    <button v-on:click="onExecuteButtonClicked" style="width:20%; height: 10vh;">Execute</button>
+                </v-row>
             </v-container>
         </v-main>
     </v-app>    
-    <!--
-    <main class="container">
-        <div class="row">
-            <select v-model="selectedItemVM" style="width:80%;">
-                <option value="" selected></option>
-                <option value="都道府県スプリット1">都道府県スプリット</option>
-            </select>
-            <button @click="onExecuteButtonClicked" style="width:20%; height: 10vh;">Execute</button>
-        </div>
-    </main>
-    -->
 </template>
 
 <script setup lang="ts">
-    //import { invoke } from "@tauri-apps/api/core";
+    import { invoke } from "@tauri-apps/api/core";
     import { open } from '@tauri-apps/plugin-dialog';
     import { readTextFile, writeTextFile } from '@tauri-apps/plugin-fs';
     import { ref } from "vue";
 
     const filePathVM = ref("C:\\Users\\muzud\\OneDrive\\ドキュメント\\temp\\temp.csv");
-    //const selectedItemVM = ref()
+    const selectedItemVM = ref()
     const textVM = ref()
 
     async function onOpenButtonClicked() {
@@ -74,7 +65,6 @@
         textVM.value = contents
     }
 
-    /*
     async function onExecuteButtonClicked() {
         console.log("［Execute］ボタンを押したぜ。")
         //textVM.value = `テスト中３ Execute selectedItemVM:[${selectedItemVM.value}]`
@@ -88,7 +78,6 @@
         const resultStr = await invoke<string>('translate', {sourceStr: sourceStr, commandName: commandName});
         return resultStr;
     }
-    */
 </script>
 
 <style>

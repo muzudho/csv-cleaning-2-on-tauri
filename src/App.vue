@@ -20,8 +20,8 @@
                                 v-model="selectedItemVM"
                                 v-bind:items="optionsVM"
                                 label="機能"
-                                item-title="key"
-                                item-value="value">
+                                item-title="value"
+                                item-value="key">
                         </v-select>
                     </v-col>
                     <v-col cols="2"><v-btn block v-on:click="onExecuteButtonClicked" style="width:20%; height: 10vh;">Execute</v-btn></v-col>
@@ -47,7 +47,7 @@
         {key: "", value: ""},
         {key: "都道府県スプリット1", value: "都道府県スプリット"},
     ]
-    const selectedItemVM = ref<IOption>({key: "", value: ""})
+    const selectedItemVM = ref<string>("")
     const textVM = ref()
 
     async function onOpenButtonClicked() {
@@ -80,9 +80,10 @@
 
     async function onExecuteButtonClicked() {
         console.log("［Execute］ボタンを押したぜ。")
-        textVM.value = "［Execute］ボタンを押したぜ。"
+        //textVM.value = "［Execute］ボタンを押したぜ。"
         //textVM.value = selectedItemVM
-        //textVM.value = await callTranslate(textVM.value, selectedItemVM.value.key)
+        //textVM.value = selectedItemVM.value
+        textVM.value = await callTranslate(textVM.value, selectedItemVM.value)
     }
 
     // Tauriのコマンドを呼び出し。
